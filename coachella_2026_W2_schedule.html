@@ -193,6 +193,16 @@ const DAY_DATES   = {"Friday": "April 17", "Saturday": "April 18", "Sunday": "Ap
 const TZ_OFFSETS  = {"PT": 0, "CT": 2, "ET": 3};
 const TZ_LABELS   = {"PT": "Pacific Time (PT)", "CT": "Central Time (CT)", "ET": "Eastern Time (ET)"};
 const TZ_LOCS     = {"PT": "Indio, CA", "CT": "Oklahoma City", "ET": "North Carolina"};
+const STAGE_YT = {
+  "Coachella Stage": "https://www.youtube.com/results?search_query=coachella+2026+coachella+stage+weekend+2+live",
+  "Outdoor Theatre": "https://www.youtube.com/results?search_query=coachella+2026+outdoor+theatre+weekend+2+live",
+  "Mojave":          "https://www.youtube.com/results?search_query=coachella+2026+mojave+stage+weekend+2+live",
+  "Sahara":          "https://www.youtube.com/results?search_query=coachella+2026+sahara+stage+weekend+2+live",
+  "Gobi":            "https://www.youtube.com/results?search_query=coachella+2026+gobi+stage+weekend+2+live",
+  "Sonora":          "https://www.youtube.com/results?search_query=coachella+2026+sonora+stage+weekend+2+live",
+  "Yuma":            "https://www.youtube.com/results?search_query=coachella+2026+yuma+stage+weekend+2+live",
+  "Quasar":          "https://www.youtube.com/results?search_query=coachella+2026+quasar+stage+weekend+2+live",
+};
 
 const PXPH       = 120;
 const PT_START   = 780;
@@ -315,7 +325,8 @@ function openPopup(jsonStr) {
   const btns = [];
   if (a.appleMusic) btns.push(`<a href="${a.appleMusic}" target="_blank" class="popup-btn btn-apple">Apple Music</a>`);
   if (a.spotify)    btns.push(`<a href="${a.spotify}"    target="_blank" class="popup-btn btn-spotify">Spotify</a>`);
-  btns.push(`<a href="${a.youtube||'https://www.youtube.com/@Coachella/streams'}" target="_blank" class="popup-btn btn-youtube">▶ YouTube</a>`);
+  const ytUrl = STAGE_YT[a.stage] || 'https://www.youtube.com/results?search_query=coachella+2026+live';
+  btns.push(`<a href="${ytUrl}" target="_blank" class="popup-btn btn-youtube">▶ Watch on YouTube</a>`);
   document.getElementById('popupButtons').innerHTML = btns.join('');
 
   document.getElementById('overlay').classList.add('active');
